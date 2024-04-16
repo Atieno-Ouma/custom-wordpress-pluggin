@@ -69,10 +69,10 @@ $checkout_fields = $checkout->get_checkout_fields();
                                         <?php wp_nonce_field( 'bank_transfer_verification', 'bank_transfer_nonce' ); ?>
                                         <p>
                                             <label for="iban"><?php esc_html_e('IBAN:', 'woocommerce'); ?></label>
-                                            <input type="text" id="iban" name="iban" placeholder="<?php esc_html_e('Enter your IBAN number', 'woocommerce'); ?>" required style="width: 400px; height: 30px; padding: 5px;">
+                                            <input type="text" id="iban" name="iban" placeholder="<?php esc_html_e('Enter your IBAN number', 'woocommerce'); ?>" required style="width: 500px; height: 50px; padding: 5px;">
                                         </p>
                                         <p>
-                                            <input type="submit" value="<?php esc_html_e('Verify IBAN', 'woocommerce'); ?>" style="background-color: #4CAF50; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;" disabled>
+                                            <input type="submit" value="<?php esc_html_e('Verify IBAN', 'woocommerce'); ?>" style="background-color: #4CAF50; color: white; padding: 20px 50px; font-size: 16px; border: none; cursor: pointer;" disabled>
                                         </p>
                                     </form>
                                     <p id="iban-verification-message"></p>
