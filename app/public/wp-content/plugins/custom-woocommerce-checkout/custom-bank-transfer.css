@@ -42,7 +42,38 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed; /* Stay on top of the content */
+    z-index: 1; /* Sit on top of other content */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scrolling if content overflows */
+    background-color: rgba(0,0,0,0.4); /* Transparent background */
+}
 
+.modal-content {
+    background-color: #fff; /* Content background color */
+    margin: 15% auto; /* Center the modal */
+    padding: 20px;
+    border: 1px solid #888; /* Border for the modal content */
+    width: 30%; /* Modal content width */
+}
+
+#close-modal {
+    background-color: #4CAF50; /* Close button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    float: right; /* Align close button to the right */
+}
+
+#close-modal:hover {
+    background-color: #3e8e41; /* Close button hover effect */
+}
 .custom-bank-transfer .iban-verify-button:hover {
     background-color: #45a049;
 }

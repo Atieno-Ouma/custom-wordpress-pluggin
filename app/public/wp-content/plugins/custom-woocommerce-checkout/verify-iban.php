@@ -29,10 +29,18 @@ if ( ! empty( $_POST['iban'] ) && check_ajax_referer( 'bank_transfer_verificatio
             'message' => 'cURL Error #: ' . $err
         );
     } else {
-        $result = array(
-            'success' => true,
-            'message' => $response
-        );
+        $apiResponse = json_decode($response, true);
+        if ($apiResponse['status'] === 200) {
+            $result = array(
+                'success' => true,
+                'message' => 'IBAN is valid.'
+            );
+        } else {
+            $result = array(
+                'success' => false,
+                'message' => $apiResponse['message'] || 'IBAN verification failed.'
+            );
+        }
     }
 
     echo json_encode($result);

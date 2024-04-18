@@ -72,7 +72,7 @@ $checkout_fields = $checkout->get_checkout_fields();
                                             <input type="text" id="iban" name="iban" placeholder="<?php esc_html_e('Enter your IBAN number', 'woocommerce'); ?>" required style="width: 500px; height: 50px; padding: 5px;">
                                         </p>
                                         <p>
-                                            <input type="submit" value="<?php esc_html_e('Verify IBAN', 'woocommerce'); ?>" style="background-color: #4CAF50; color: white; padding: 20px 50px; font-size: 16px; border: none; cursor: pointer;" disabled>
+                                            <input type="submit" value="<?php esc_html_e('Verify IBAN', 'woocommerce'); ?>" style="background-color: #4CAF50; color: white; padding: 20px 50px; font-size: 16px; border: none; cursor: pointer;" >
                                         </p>
                                     </form>
                                     <p id="iban-verification-message"></p>
@@ -80,7 +80,6 @@ $checkout_fields = $checkout->get_checkout_fields();
                                         (function($) {
                                             $(document).ready(function() {
                                                 $("#iban").keyup(function() {
-                                                    // Enable verification button only if IBAN is not empty
                                                     if ($(this).val().length > 0) {
                                                         $("#bank-transfer-form input[type='submit']").prop("disabled", false);
                                                     } else {
@@ -90,21 +89,13 @@ $checkout_fields = $checkout->get_checkout_fields();
                                                 });
 
                                                 $("#bank-transfer-form").submit(function(event) {
-                                                    event.preventDefault(); // Prevent default form submission
                                                     var iban = $("#iban").val();
                                                     var nonce = $("#bank_transfer_nonce").val();
 
-                                                    $("#bank-transfer-form input[type='submit']").click(function(event) {
-                                                        event.preventDefault(); // Prevent default form submission
-                                                        // Your existing code for submitting the AJAX request
-                                                    });
-
-                                                    // Disable the button and show a loading message
                                                     $("#bank-transfer-form input[type='submit']").prop("disabled", true).val("Verifying...");
 
-                                                    // Send AJAX request to your server-side script for IBAN verification
                                                     $.ajax({
-                                                        url: ajaxUrl + "?action=verify_iban", // Replace ajaxUrl with the actual URL to the verify-iban.php file
+                                                        url: "./verify-iban.php" + "?action=verify_iban",
                                                         type: "POST",
                                                         data: {
                                                             iban: iban,
@@ -129,8 +120,7 @@ $checkout_fields = $checkout->get_checkout_fields();
                                                             $("#bank-transfer-form input[type='submit']").prop("disabled", false).val("Verify IBAN");
                                                         }
                                                     });
-                                                });
-                                            });
+                                                });                                            });
                                         })(jQuery);
                                     </script>                            </div>                            </div>
                         </div>
