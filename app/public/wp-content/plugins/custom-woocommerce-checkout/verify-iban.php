@@ -13,8 +13,8 @@ if ( ! empty( $_POST['iban'] ) && check_ajax_referer( 'bank_transfer_verificatio
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => json_encode(['iban_number' => $iban]),
         CURLOPT_HTTPHEADER => [
-            "X-RapidAPI-Host: bank-iban-swift-api.p.rapidapi.com",
-            "X-RapidAPI-Key: b4d3cbf52bmsh268a9e63ddcfe76p1a0eeejsn066a2536ac02",
+            "X-RapidAPI-Host: YOUR HOST",
+            "X-RapidAPI-Key: Your-API-KEY",
             "content-type: application/json"
         ],
     ]);
